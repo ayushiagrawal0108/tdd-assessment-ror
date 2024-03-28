@@ -9,7 +9,6 @@ class Calculator
 
       num_array = numbers.split(/#{delimiter}|\n/)
       num_array.map(&:to_i).sum
-      numbers.map(&:to_i).sum
     end
 end
   
