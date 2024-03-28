@@ -8,6 +8,10 @@ class Calculator
       end
 
       num_array = numbers.split(/#{delimiter}|\n/)
+      negatives = numbers.split(",").select { |num| num.to_i.negative? }
+      if negatives.any?
+        raise "negative numbers not allowed #{negatives.join(',')}"
+      end
       num_array.map(&:to_i).sum
     end
 end
