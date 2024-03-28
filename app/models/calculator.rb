@@ -1,7 +1,15 @@
 class Calculator
     def self.add(numbers)
       return 0 if numbers.empty?
-      numbers.split(",").map(&:to_i).sum
+      delimiter = ','
+      if numbers.start_with?("//")
+        delimiter = numbers[2]
+        numbers = numbers[(numbers.index("\n") + 1)..-1]
+      end
+
+      num_array = numbers.split(/#{delimiter}|\n/)
+      num_array.map(&:to_i).sum
+      numbers.map(&:to_i).sum
     end
 end
   
